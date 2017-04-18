@@ -2,7 +2,8 @@ var gulp = require('gulp'),
     connect = require('gulp-connect'),
     ts = require("gulp-typescript"),
     tsProject = ts.createProject('tsconfig.json'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    concat = require('gulp-concat');
 
 gulp.task('connect', function() {
     connect.server({
@@ -14,8 +15,7 @@ gulp.task('connect', function() {
 
 gulp.task("ts", function() {
     var tsResult = gulp.src("src/**/*.ts")
-        .pipe(tsProject()); //按照tsconfig进行编译
-
+        .pipe(tsProject()) //按照tsconfig进行编译
     return tsResult.js.pipe(gulp.dest('dist/'));
 });
 
